@@ -1,0 +1,37 @@
+/*App*/
+.App {
+
+}
+
+.App__header {
+  text-align: center;
+}
+
+.App__description {
+  order: 1;
+}
+
+.App__form {
+  order: 2;
+}
+
+.App__footer {
+  align-self: flex-end;
+  text-align: center;
+}
+
+/*description*/
+.description {
+  background-color: black;
+  color: white;
+  padding-top: 1rem;
+}
+
+.description__title {
+  text-transform: capitalize;
+}
+
+.description__text {
+  font-size: 0.875rem;
+  margin-bottom: 3.5em;
+}

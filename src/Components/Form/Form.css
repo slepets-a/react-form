@@ -1,0 +1,17 @@
+.Form {
+  padding-top: 1rem;
+}
+
+.Form__title {
+  text-transform: capitalize;
+}
+
+.Form__input {
+  background-color: #fff;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: .875rem;
+  margin-bottom: 23px;
+  padding: 19px 15px;
+  width: 100%;
+}

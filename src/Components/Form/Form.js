@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './Form.css';
 import CardImage from './card.png';
 
 class Form extends Component {
   render() {
     return (
-      <div className="row Form">
+      <form className="row Form">
         <div className="col-12">
           <h5 className="Form__title">Account information</h5>
         </div>
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <input type="text" className="Form__input" id="firstName" placeholder="First Name" required={true}/>
+              <input type="text" className="Form__input" id="firstName" placeholder="First Name" pattern="[A-Za-z]{3,10}" required={true}/>
             </div>
             <div className="col-12 col-sm-6">
               <input type="text" className="Form__input" id="lastName" placeholder="Second Name" required={true}/>
@@ -64,11 +64,29 @@ class Form extends Component {
               <img src={CardImage} alt="Logos"/>
             </div>
             <div className="col-8 col-sm-12 col-md-8 text-right">
-              <button className="btn btn-link" id="ccv">Where is my digit CVV2?</button>
+              <button className="btn btn-link Form__where-is-cvv" type="button" id="ccv">Where is my digit CVV2?</button>
             </div>
           </div>
         </div>
-      </div>
+        <div className="col-12">
+          <div className="Form__membership-description">
+            1 Month Membership: $XX.XX
+          </div>
+        </div>
+        <div className="col-12">
+          <label className="Form__input">
+            <input type="checkbox" className="Form__checkbox"/>
+            <p className="Form__custom-checkbox">
+              I have read and agree to the Terms & Conditions and certify that I am 18 years of age. I acknowledge that
+              the recurring membership will rebill at [[Price]] every 30 days, further notifications will be by email from
+              [[domain]].
+            </p>
+          </label>
+        </div>
+        <div className="col-12 text-center">
+          <input type="submit" className="Form__submit-button"/>
+        </div>
+      </form>
     )
   }
 }

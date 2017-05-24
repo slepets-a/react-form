@@ -26,6 +26,7 @@
 
 .App__form {
   order: 2;
+  padding: 28px 15px 16px 36px;
 }
 
 .App__footer {

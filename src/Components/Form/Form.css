@@ -1,8 +1,9 @@
 .Form {
-  padding-top: 1rem;
+  padding: 0;
 }
 
 .Form__title {
+  margin-bottom: 40px;
   text-transform: capitalize;
 }
 
@@ -13,5 +14,76 @@
   font-size: .875rem;
   margin-bottom: 23px;
   padding: 19px 15px;
+  transition: background-color .25s ease-in-out;
   width: 100%;
+}
+
+.Form__input:valid {
+  background-color: rgba(0, 255, 0, .1);
+}
+
+.Form__where-is-cvv {
+  cursor: pointer;
+}
+
+.Form__membership-description {
+  background-color: #4990e2;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  margin-top: 25px;
+  padding: 15px 10px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.Form__checkbox {
+  display: none;
+}
+
+.Form__custom-checkbox {
+  cursor: pointer;
+  margin-bottom: 0;
+  padding-left: 50px;
+  padding-right: 8px;
+  position: relative;
+}
+
+.Form__custom-checkbox::before {
+  border: 2px solid #c71122;
+  border-radius: 5px;
+  content: '';
+  display: inline-block;
+  height: 20px;
+  left: 9px;
+  position: absolute;
+  top: 5px;
+  transition: border-color .15s ease-in-out, background-color .25s ease-in-out;
+  width: 20px;
+}
+
+.Form__checkbox:checked + .Form__custom-checkbox::before {
+  background-color: green;
+  border-color: green;
+}
+
+.Form__submit-button {
+  background-color: #c71122;
+  border: 2px solid #c71122;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  min-width: 240px;
+  padding: 18px;
+  text-align: center;
+  transition: color .25s ease-in-out, background-color .25s ease-in-out;
+}
+
+.Form__submit-button:hover {
+  background-color: white;
+  color: #c71122;
 }

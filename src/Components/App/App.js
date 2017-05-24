@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './App.css';
 
 import Form from  '../Form/Form';
@@ -46,7 +46,8 @@ class App extends Component {
               </ul>
             </div>
           </nav>
-        </div> {/*end App__header*/}
+        </div>
+        {/*end App__header*/}
         <div className="container App__body">
           <div className="row">
             <div className="col-12 col-sm-6 App__form">
@@ -58,20 +59,23 @@ class App extends Component {
                   Premium content upgrade
                 </h5>
                 <p className="description__text">
-                  Premium membership plans help you take advantage of everything [[sitename]] has in store! Get unlimited
+                  Premium membership plans help you take advantage of everything [[sitename]] has in store! Get
+                  unlimited
                   acess to Premium games, music, books, movies! Regular members only recive acess to limited content.
                 </p>
                 <h5 className="description__title">
                   Service details
                 </h5>
                 <p className="description__text">
-                  We make sure to provide our members with a detailed transaction history so that they know what they are
+                  We make sure to provide our members with a detailed transaction history so that they know what they
+                  are
                   paying for. Credit card information is required to facilitate future purchases only. All charges will
                   appear on credit card statement as [[Descriptor]] as the descriptor.
                 </p>
                 <p className="description__text">
                   You can cancel your membership at any time, free of charge via telephone [[1-888--888-8888]],
-                  [[1-999–999-9999]] or via our online-form available subsequent to signup (for more details, please refer
+                  [[1-999–999-9999]] or via our online-form available subsequent to signup (for more details, please
+                  refer
                   to our cancellation policy in the Terms & Conditions). All our [[SiteName]] members have access to a
                   quickly expanding library of entertainment. Play games, movies and music, here on [[SiteName]].
                 </p>
@@ -88,10 +92,12 @@ class App extends Component {
               </div>
             </div>
           </div>
-        </div> {/*end App__body*/}
+        </div>
+        {/*end App__body*/}
         <div className="App__footer">
           Some footer here
-        </div> {/*end App__footer*/}
+        </div>
+        {/*end App__footer*/}
       </div>
     )
   }

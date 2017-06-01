@@ -12,6 +12,7 @@
 }
 
 .App__header {
+  background-color: #292b2c;
   text-align: center;
 }
 
@@ -26,7 +27,7 @@
 
 .App__form {
   order: 2;
-  padding: 28px 15px 16px 36px;
+  padding: 28px 15px 24px 36px;
 }
 
 .App__footer {
@@ -40,14 +41,27 @@
 .description {
   background-color: black;
   color: white;
-  padding-top: 1rem;
+  padding: 28px 36px 24px 15px;
 }
 
 .description__title {
+  margin-bottom: 1.5em;
   text-transform: capitalize;
 }
 
 .description__text {
   font-size: 0.875rem;
   margin-bottom: 3.5em;
+}
+
+/*footer*/
+.footer__link {
+  color: white;
+}
+
+.footer__link:active,
+.footer__link:hover,
+.footer__link:focus {
+  color: #c71122;
+  text-decoration: none;
 }

@@ -5,47 +5,52 @@ import Form from  '../Form/Form';
 
 class App extends Component {
   render() {
+    let currentYear = new Date();
+    currentYear = currentYear.getFullYear();
+    
     return (
       <div className="App">
         <div className="App__header">
-          <nav className="navbar navbar-togglable-sm navbar-inverse bg-inverse">
-            <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                    data-target="#navigation" aria-controls="navigation" aria-expanded="false"
-                    aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <a href="/" className="navbar-brand">Navbar</a>
-            
-            <div className="collapse navbar-collapse" id="navigation">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <a href="/" className="nav-link">
-                    Home <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    Contact Us
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    Login
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    Support
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a href="/" className="nav-link">
-                    Sign Up
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <div className="container">
+            <nav className="navbar navbar-toggleable-sm navbar-inverse bg-inverse">
+              <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                      data-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                      aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <a href="/" className="navbar-brand">Navbar</a>
+              
+              <div className="collapse navbar-collapse" id="navigation">
+                <ul className="navbar-nav ml-auto">
+                  <li className="nav-item active">
+                    <a href="/" className="nav-link">
+                      Home <span className="sr-only">(current)</span>
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/" className="nav-link">
+                      Contact Us
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/" className="nav-link">
+                      Login
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/" className="nav-link">
+                      Support
+                    </a>
+                  </li>
+                  <li className="nav-item">
+                    <a href="/" className="nav-link">
+                      Sign Up
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
         </div>
         {/*end App__header*/}
         <div className="container App__body">
@@ -61,7 +66,7 @@ class App extends Component {
                 <p className="description__text">
                   Premium membership plans help you take advantage of everything [[sitename]] has in store! Get
                   unlimited
-                  acess to Premium games, music, books, movies! Regular members only recive acess to limited content.
+                  access to Premium games, music, books, movies! Regular members only recive acess to limited content.
                 </p>
                 <h5 className="description__title">
                   Service details
@@ -73,10 +78,14 @@ class App extends Component {
                   appear on credit card statement as [[Descriptor]] as the descriptor.
                 </p>
                 <p className="description__text">
-                  You can cancel your membership at any time, free of charge via telephone [[1-888--888-8888]],
-                  [[1-999–999-9999]] or via our online-form available subsequent to signup (for more details, please
+                  You can cancel your membership at any time, free of charge via telephone <a href="tel:18888888888"
+                                                                                              className="text-muted">[[1-888--888-8888]]</a>,
+                  <a href="tel:19999999999" className="text-muted">[[1-999–999-9999]]</a> or via our online-form
+                  available subsequent to signup (for more details, please
                   refer
-                  to our cancellation policy in the Terms & Conditions). All our [[SiteName]] members have access to a
+                  to our cancellation policy in the <a href="#" className="text-muted" target="_blank"
+                                                       rel="noopener noreferrer">Terms & Conditions</a>). All our
+                  [[SiteName]] members have access to a
                   quickly expanding library of entertainment. Play games, movies and music, here on [[SiteName]].
                 </p>
                 <h5 className="description__title">
@@ -94,8 +103,8 @@ class App extends Component {
           </div>
         </div>
         {/*end App__body*/}
-        <div className="App__footer">
-          Some footer here
+        <div className="App__footer footer">
+          <a href="https://www.linkedin.com/in/artemslepets/" className="footer__link" target="_blank" rel="noopener noreferrer">©</a> {currentYear} Artem Slepets
         </div>
         {/*end App__footer*/}
       </div>

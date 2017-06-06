@@ -25,6 +25,14 @@
 
 .Form__where-is-cvv {
   cursor: pointer;
+  white-space: initial;
+}
+
+.Form__ccv-image {
+  left: 50%;
+  position: absolute;
+  top: -100px;
+  transform: translateX(-40%);
 }
 
 .Form__membership-description {

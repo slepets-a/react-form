@@ -23,11 +23,12 @@
 
 .App__description {
   order: 1;
+  padding: 28px 15px 24px;
 }
 
 .App__form {
   order: 2;
-  padding: 28px 15px 24px 36px;
+  padding: 28px 15px 24px;
 }
 
 .App__footer {
@@ -37,11 +38,21 @@
   text-align: center;
 }
 
+@media (min-width: 576px) {
+  
+  .App__description {
+    padding: 28px 36px 24px 15px;
+  }
+  
+  .App__form {
+    padding: 28px 15px 24px 36px;
+  }
+}
+
 /*description*/
 .description {
   background-color: black;
   color: white;
-  padding: 28px 36px 24px 15px;
 }
 
 .description__title {

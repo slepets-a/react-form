@@ -1,8 +1,26 @@
 import React, {Component} from 'react';
 import './Form.css';
 import CardImage from './card.png';
+import ccvImage from './ccv.png';
+
+import InputField from '../InputField/InputField';
 
 class Form extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.toggleCvvImage = this.toggleCvvImage.bind(this);
+    this.state = {
+      showCvvImage: false
+    }
+  }
+  
+  toggleCvvImage() {
+    this.setState({
+      showCvvImage: !this.state.showCvvImage
+    });
+  }
+  
   render() {
     return (
       <form className="row Form">
@@ -12,10 +30,10 @@ class Form extends Component {
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <input type="text" className="Form__input" id="firstName" placeholder="First Name" pattern="[A-Za-z]{2,10}" required={true}/>
+              <InputField type="text" className="Form__input" id="firstName" placeholder="First Name" pattern="[A-Za-z]{2,10}" required="true"/>
             </div>
             <div className="col-12 col-sm-6">
-              <input type="text" className="Form__input" id="lastName" placeholder="Second Name" pattern="[A-Za-z]{2,10}" required={true}/>
+              <InputField type="text" className="Form__input" id="lastName" placeholder="Second Name" pattern="[A-Za-z]{2,10}" required="true"/>
             </div>
           </div>
         </div>
@@ -30,29 +48,29 @@ class Form extends Component {
               </select>
             </div>
             <div className="col-12 col-sm-6">
-              <input type="text" className="Form__input" id="txtState" placeholder="Province / State" pattern="[A-Za-z ]{3,16}" required={true}/>
+              <InputField type="text" className="Form__input" id="txtState" placeholder="Province / State" pattern="[A-Za-z ]{3,16}" required="true"/>
             </div>
           </div>
         </div>
         <div className="col-12">
-          <input type="text" className="Form__input" id="address" placeholder="Address" required={true}/>
+          <InputField type="text" className="Form__input" id="address" placeholder="Address" required="true"/>
         </div>
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <input type="text" className="Form__input" id="city" placeholder="City" pattern="[A-Za-z0-9]{3,12}" required={true}/>
+              <InputField type="text" className="Form__input" id="city" placeholder="City" pattern="[A-Za-z0-9]{3,12}" required="true"/>
             </div>
             <div className="col-12 col-sm-6">
-              <input type="text" className="Form__input" id="zipCode" placeholder="ZIP / Postal Code" pattern="[A-Za-z0-9]{3,6}" required={true}/>
+              <InputField type="text" className="Form__input" id="zipCode" placeholder="ZIP / Postal Code" pattern="[A-Za-z0-9]{3,6}" required="true"/>
             </div>
           </div>
         </div>
         <div className="col-12">
-          <input type="text" className="Form__input" id="ccn" placeholder="Card number" pattern="[0-9 ]{16,19}" required={true}/>
+          <InputField type="text" className="Form__input" id="ccn" placeholder="Card number" pattern="[0-9 ]{16,19}" required="true"/>
         </div>
         <div className="col-12">
           <div className="row">
-            <div className="col-12 col-sm-4">
+            <div className="col-12 col-md-4">
               <select className="Form__input" id="month" placeholder="Month" required={true} defaultValue="">
                 <option value="" disabled={true}>Month</option>
                 <option value="01">January</option>
@@ -69,7 +87,7 @@ class Form extends Component {
                 <option value="12">December</option>
               </select>
             </div>
-            <div className="col-12 col-sm-4">
+            <div className="col-12 col-md-4">
               <select className="Form__input" id="year" placeholder="Year" required={true} defaultValue="">
                 <option value="" disabled={true}>Year</option>
                 <option value="2017">2017</option>
@@ -86,18 +104,19 @@ class Form extends Component {
                 <option value="2028">2028</option>
               </select>
             </div>
-            <div className="col-12 col-sm-4">
-              <input type="password" className="Form__input" id="cvv2Code" placeholder="CVV2" pattern="[0-9]{3}" required={true}/>
+            <div className="col-12 col-md-4">
+              <InputField type="password" className="Form__input" id="cvv2Code" placeholder="CVV2" pattern="[0-9]{3}" required="true"/>
             </div>
           </div>
         </div>
         <div className="col-12">
           <div className="row">
-            <div className="col-4 col-sm-12 col-md-4">
+            <div className="col-12 col-md-4">
               <img src={CardImage} alt="Logos"/>
             </div>
-            <div className="col-8 col-sm-12 col-md-8 text-right">
-              <button className="btn btn-link Form__where-is-cvv" type="button" id="ccv">Where is my digit CVV2?</button>
+            <div className="col-12 col-md-8 text-center medium-text-right">
+              <button className="btn btn-link Form__where-is-cvv" type="button" id="ccv" onClick={this.toggleCvvImage}>Where is my digit CVV2?</button>
+              {this.state.showCvvImage && <img src={ccvImage} alt="Where is CVV2 code" className="Form__ccv-image"/>}
             </div>
           </div>
         </div>

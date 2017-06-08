@@ -23,6 +23,19 @@
   background-color: rgba(0, 255, 0, .1);
 }
 
+.Form__input.invalid {
+  /*background-color: rgba(255, 0, 0, .1);*/
+  border-color: rgba(255, 0, 0, 1);
+}
+
+.Form__error-message {
+  bottom: -14px;
+  color: rgba(255, 0, 0, .8);
+  font-size: 14px;
+  left: 20px;
+  position: absolute;
+}
+
 .Form__where-is-cvv {
   cursor: pointer;
   white-space: initial;
@@ -105,5 +118,4 @@
 .Form__protected-text {
   font-size: .875rem;
   text-align: left;
-  
 }

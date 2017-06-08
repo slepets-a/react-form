@@ -30,10 +30,14 @@ class Form extends Component {
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <InputField type="text" className="Form__input" id="firstName" placeholder="First Name" pattern="[A-Za-z]{2,10}" required="true"/>
+              <InputField type="text" className="Form__input" id="firstName" placeholder="First Name"
+                          pattern="^[A-Za-z]{2,10}$" errorMessage="Letters only. 10 characters max"
+                          emptyMessage="Please, enter your name" required="true"/>
             </div>
             <div className="col-12 col-sm-6">
-              <InputField type="text" className="Form__input" id="lastName" placeholder="Second Name" pattern="[A-Za-z]{2,10}" required="true"/>
+              <InputField type="text" className="Form__input" id="lastName" placeholder="Second Name"
+                          pattern="^[A-Za-z]{2,10}$" errorMessage="Letters only. 10 characters max"
+                          emptyMessage="Please, enter your second name" required="true"/>
             </div>
           </div>
         </div>
@@ -48,25 +52,35 @@ class Form extends Component {
               </select>
             </div>
             <div className="col-12 col-sm-6">
-              <InputField type="text" className="Form__input" id="txtState" placeholder="Province / State" pattern="[A-Za-z ]{3,16}" required="true"/>
+              <InputField type="text" className="Form__input" id="txtState" placeholder="Province / State"
+                          pattern="^[A-Za-z ]{3,16}$" errorMessage="Letters only, 3-16 characters"
+                          emptyMessage="Field can't be empty" required="true"/>
             </div>
           </div>
         </div>
         <div className="col-12">
-          <InputField type="text" className="Form__input" id="address" placeholder="Address" required="true"/>
+          <InputField type="text" className="Form__input" id="address" placeholder="Address"
+                      pattern="^[a-zA-Z0-9 /\\#$%&,]{3,25}$" errorMessage="Invalid input. 25 characters max"
+                      emptyMessage="Please, enter your address" required="true"/>
         </div>
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <InputField type="text" className="Form__input" id="city" placeholder="City" pattern="[A-Za-z0-9]{3,12}" required="true"/>
+              <InputField type="text" className="Form__input" id="city" placeholder="City" pattern="^[A-Za-z0-9]{3,12}$"
+                          errorMessage="12 characters max. No special characters"
+                          emptyMessage="Please, enter your city" required="true"/>
             </div>
             <div className="col-12 col-sm-6">
-              <InputField type="text" className="Form__input" id="zipCode" placeholder="ZIP / Postal Code" pattern="[A-Za-z0-9]{3,6}" required="true"/>
+              <InputField type="text" className="Form__input" id="zipCode" placeholder="ZIP / Postal Code"
+                          pattern="^[A-Za-z0-9]{3,6}$" errorMessage="3-6 characters. Letters and digits only"
+                          emptyMessage="Please, enter your ZIP-code" required="true"/>
             </div>
           </div>
         </div>
         <div className="col-12">
-          <InputField type="text" className="Form__input" id="ccn" placeholder="Card number" pattern="[0-9 ]{16,19}" required="true"/>
+          <InputField type="text" className="Form__input" id="ccn" placeholder="Card number" pattern="^[0-9 ]{16,19}$"
+                      errorMessage="Card number can consist from digits and spaces"
+                      emptyMessage="This field can't be empty" required="true"/>
         </div>
         <div className="col-12">
           <div className="row">
@@ -105,7 +119,9 @@ class Form extends Component {
               </select>
             </div>
             <div className="col-12 col-md-4">
-              <InputField type="password" className="Form__input" id="cvv2Code" placeholder="CVV2" pattern="[0-9]{3}" required="true"/>
+              <InputField type="password" className="Form__input" id="cvv2Code" placeholder="CVV2" pattern="^[0-9]{3}$"
+                          errorMessage="CVV code consist from 3 digits"
+                          emptyMessage="Field is required" required="true"/>
             </div>
           </div>
         </div>

@@ -83,7 +83,7 @@ class App extends Component {
                   <a href="tel:19999999999" className="text-muted">[[1-999–999-9999]]</a> or via our online-form
                   available subsequent to signup (for more details, please
                   refer
-                  to our cancellation policy in the <a href="#" className="text-muted" target="_blank"
+                  to our cancellation policy in the <a href="/" className="text-muted" target="_blank"
                                                        rel="noopener noreferrer">Terms & Conditions</a>). All our
                   [[SiteName]] members have access to a
                   quickly expanding library of entertainment. Play games, movies and music, here on [[SiteName]].

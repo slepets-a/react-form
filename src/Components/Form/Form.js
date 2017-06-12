@@ -4,6 +4,8 @@ import CardImage from './card.png';
 import ccvImage from './ccv.png';
 
 import InputField from '../InputField/InputField';
+import SelectField from '../SelectField/SelectField';
+import CheckboxField from '../CheckboxField/CheckboxField';
 
 class Form extends Component {
   
@@ -11,7 +13,42 @@ class Form extends Component {
     super(props);
     this.toggleCvvImage = this.toggleCvvImage.bind(this);
     this.state = {
-      showCvvImage: false
+      showCvvImage: false,
+      selectData: {
+        fakeCountry: {
+          'UA': 'Ukraine',
+          'US': 'USA',
+          'UK': 'United Kingdom'
+        },
+        month: {
+          '01': 'January',
+          '02': 'February',
+          '03': 'March',
+          '04': 'April',
+          '05': 'May',
+          '06': 'June',
+          '07': 'July',
+          '08': 'August',
+          '09': 'September',
+          '10': 'October',
+          '11': 'November',
+          '12': 'December'
+        },
+        year: {
+          '2017': '2017',
+          '2018': '2018',
+          '2019': '2019',
+          '2020': '2020',
+          '2021': '2021',
+          '2022': '2022',
+          '2023': '2023',
+          '2024': '2024',
+          '2025': '2025',
+          '2026': '2026',
+          '2027': '2027',
+          '2028': '2028'
+        }
+      }
     }
   }
   
@@ -44,12 +81,9 @@ class Form extends Component {
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <select className="Form__input" id="fakeCountry" placeholder="Country" required={true} defaultValue="">
-                <option value="" disabled={true}>Country</option>
-                <option value="UA">Ukraine</option>
-                <option value="US">USA</option>
-                <option value="UK">United Kingdom</option>
-              </select>
+              <SelectField className="Form__input" id="fakeCountry" required={true}
+                           emptyMessage="Please, pick your country" placeholder="Country" defaultValue=""
+                           data={this.state.selectData.fakeCountry}/>
             </div>
             <div className="col-12 col-sm-6">
               <InputField type="text" className="Form__input" id="txtState" placeholder="Province / State"
@@ -85,42 +119,16 @@ class Form extends Component {
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-md-4">
-              <select className="Form__input" id="month" placeholder="Month" required={true} defaultValue="">
-                <option value="" disabled={true}>Month</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
+              <SelectField className="Form__input" id="month" required={true} emptyMessage="Please, pick the month"
+                           placeholder="Month" defaultValue="" data={this.state.selectData.month}/>
             </div>
             <div className="col-12 col-md-4">
-              <select className="Form__input" id="year" placeholder="Year" required={true} defaultValue="">
-                <option value="" disabled={true}>Year</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-                <option value="2025">2025</option>
-                <option value="2026">2026</option>
-                <option value="2027">2027</option>
-                <option value="2028">2028</option>
-              </select>
+              <SelectField className="Form__input" id="year" required={true} emptyMessage="Please, pick the year"
+                           placeholder="Year" defaultValue="" data={this.state.selectData.year}/>
             </div>
             <div className="col-12 col-md-4">
               <InputField type="password" className="Form__input" id="cvv2Code" placeholder="CVV2" pattern="^[0-9]{3}$"
-                          errorMessage="CVV code consist from 3 digits"
+                          errorMessage="Must be 3 digits"
                           emptyMessage="Field is required" required="true"/>
             </div>
           </div>
@@ -131,7 +139,9 @@ class Form extends Component {
               <img src={CardImage} alt="Logos"/>
             </div>
             <div className="col-12 col-md-8 text-center medium-text-right">
-              <button className="btn btn-link Form__where-is-cvv" type="button" id="ccv" onClick={this.toggleCvvImage}>Where is my digit CVV2?</button>
+              <button className="btn btn-link Form__where-is-cvv" type="button" id="ccv" onClick={this.toggleCvvImage}>
+                Where is my digit CVV2?
+              </button>
               {this.state.showCvvImage && <img src={ccvImage} alt="Where is CVV2 code" className="Form__ccv-image"/>}
             </div>
           </div>
@@ -142,18 +152,13 @@ class Form extends Component {
           </div>
         </div>
         <div className="col-12">
-          <label className="Form__input Form__checkbox-container">
-            <input type="checkbox" className="Form__checkbox" required={true}/>
-            <p className="Form__custom-checkbox">
-              I have read and agree to the Terms & Conditions and certify that I am 18 years of age. I acknowledge that
-              the recurring membership will rebill at [[Price]] every 30 days, further notifications will be by email from
-              [[domain]].
-            </p>
-          </label>
+          <CheckboxField className="Form__input Form__checkbox-container" required="true"/>
         </div>
         <div className="col-12 text-center">
           <input type="submit" className="Form__submit-button"/>
-          <p className="Form__protected-text">All users are protected by our Service Guarantee. Your information will be safe as we employ the finest security measures to protect our members. We value your privacy and will not sell or rent your private information to third parties.</p>
+          <p className="Form__protected-text">All users are protected by our Service Guarantee. Your information will be
+            safe as we employ the finest security measures to protect our members. We value your privacy and will not
+            sell or rent your private information to third parties.</p>
         </div>
       </form>
     )

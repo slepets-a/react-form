@@ -19,21 +19,22 @@
   width: 100%;
 }
 
-.Form__input:valid {
+.Form__input.valid {
   background-color: rgba(0, 255, 0, .1);
 }
 
 .Form__input.invalid {
   /*background-color: rgba(255, 0, 0, .1);*/
   border-color: rgba(255, 0, 0, 1);
+  margin-bottom: 2px;
 }
 
 .Form__error-message {
-  bottom: -14px;
   color: rgba(255, 0, 0, .8);
   font-size: 14px;
-  left: 20px;
-  position: absolute;
+  margin-bottom: 0;
+  padding-left: 5px;
+  /*position: absolute;*/
 }
 
 .Form__where-is-cvv {

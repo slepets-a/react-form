@@ -9,14 +9,14 @@ class InputField extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       inputValue: '',
-      valid: true,
+      valid: 'init',
       displayMessage: ''
     }
   }
   
   disableValidationNotification() {
     this.setState({
-      valid: true
+      valid: 'init'
     })
   }
   
@@ -33,14 +33,17 @@ class InputField extends Component {
     let regex = new RegExp(pattern); //create regex from the string
     if (enteredData === '') {
       this.setState({
-        valid: false,
+        valid: 'invalid',
         displayMessage: emptyMessage
       });
     } else if (regex.test(enteredData)) {
+      this.setState({
+        valid: 'valid'
+      });
       console.log('Field is valid');
     } else {
       this.setState({
-        valid: false,
+        valid: 'invalid',
         displayMessage: errorMessage
       });
     }
@@ -49,11 +52,11 @@ class InputField extends Component {
   render() {
     let {type, className, id, placeholder, pattern, required} = this.props;
     return (
-      <div>
-        <input type={type} className={this.state.valid ? className: className+' invalid' } id={id} placeholder={placeholder} pattern={pattern} required={required}
+      <label className="InputField__label">
+        <input type={type} className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id} placeholder={placeholder} pattern={pattern} required={required}
                onFocus={this.disableValidationNotification} onChange={this.handleChange} onBlur={this.validateInputField}/>
-          {!this.state.valid && <p className="Form__error-message">{this.state.displayMessage}</p>}
-      </div>
+          {this.state.valid === 'invalid' && <p className="Form__error-message">{this.state.displayMessage}</p>}
+      </label>
     )
   }
 }

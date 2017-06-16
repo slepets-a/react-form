@@ -43,6 +43,7 @@ class SelectField extends Component {
   
   render() {
     let {className, id, placeholder, required} = this.props;
+    this.showUserInfo();
     return (
       <label className="SelectField__label">
         <select className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id}

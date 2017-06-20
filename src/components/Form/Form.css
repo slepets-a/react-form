@@ -62,38 +62,12 @@
   text-transform: capitalize;
 }
 
-.Form__checkbox {
-  display: none;
-}
-
-.Form__custom-checkbox {
-  cursor: pointer;
-  margin-bottom: 0;
-  padding-left: 50px;
-  padding-right: 8px;
-  position: relative;
-}
-
-.Form__custom-checkbox::before {
-  border: 2px solid #c71122;
-  border-radius: 5px;
-  content: '';
-  display: inline-block;
-  height: 20px;
-  left: 9px;
-  position: absolute;
-  top: 5px;
-  transition: border-color .15s ease-in-out, background-color .25s ease-in-out;
-  width: 20px;
-}
-
-.Form__checkbox:checked + .Form__custom-checkbox::before {
-  background-color: green;
-  border-color: green;
-}
-
 .Form__checkbox-container {
   margin-bottom: 40px;
+}
+
+.CheckboxField__custom-checkbox {
+
 }
 
 .Form__submit-button {

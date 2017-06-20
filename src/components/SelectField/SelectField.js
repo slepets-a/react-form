@@ -27,7 +27,7 @@ class SelectField extends Component {
   }
   
   validateInputField() {
-    let {emptyMessage} = this.props;
+    let {emptyMessage} = this.props.options;
     if (this.state.selectValue !== '') {
       this.setState({
         valid: 'valid'
@@ -42,8 +42,7 @@ class SelectField extends Component {
   }
   
   render() {
-    let {className, id, placeholder, required} = this.props;
-    this.showUserInfo();
+    let {className, id, placeholder, required} = this.props.options;
     return (
       <label className="SelectField__label">
         <select className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id}
@@ -51,7 +50,7 @@ class SelectField extends Component {
                 defaultValue="" onFocus={this.disableValidationNotification} onChange={this.handleChange}
                 onBlur={this.validateInputField}>
           <option value="" disabled={true}>{placeholder}</option>
-          {Object.entries(this.props.data).map((option, index) => {
+          {Object.entries(this.props.options.data).map((option, index) => {
             return <option key={index} value={option[0]}>{option[1]}</option>
           })}
         </select>

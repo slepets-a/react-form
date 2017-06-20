@@ -28,7 +28,7 @@ class InputField extends Component {
   }
   
   validateInputField() {
-    let {emptyMessage, errorMessage, pattern} = this.props; //destruct props data
+    let {emptyMessage, errorMessage, pattern} = this.props.options; //destruct props data
     let enteredData = this.state.inputValue; //take field value
     let regex = new RegExp(pattern); //create regex from the string
     if (enteredData === '') {
@@ -50,7 +50,7 @@ class InputField extends Component {
   }
   
   render() {
-    let {type, className, id, placeholder, pattern, required} = this.props;
+    let {type, className, id, placeholder, pattern, required} = this.props.options;
     return (
       <label className="InputField__label">
         <input type={type} className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id} placeholder={placeholder} pattern={pattern} required={required}

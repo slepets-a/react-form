@@ -42,7 +42,7 @@ class SelectField extends Component {
   }
   
   render() {
-    let {className, id, placeholder, required} = this.props.options;
+    let {className, id, placeholder, required, data} = this.props.options;
     return (
       <label className="SelectField__label">
         <select className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id}
@@ -50,8 +50,8 @@ class SelectField extends Component {
                 defaultValue="" onFocus={this.disableValidationNotification} onChange={this.handleChange}
                 onBlur={this.validateInputField}>
           <option value="" disabled={true}>{placeholder}</option>
-          {Object.entries(this.props.options.data).map((option, index) => {
-            return <option key={index} value={option[0]}>{option[1]}</option>
+          {data.map((option, index) => {
+            return <option key={index} value={option.value}>{option.label}</option>
           })}
         </select>
         {this.state.valid === 'invalid' && <p className="Form__error-message">{this.state.displayMessage}</p>}

@@ -12,6 +12,7 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.toggleCvvImage = this.toggleCvvImage.bind(this);
+    this.submitHandle = this.submitHandle.bind(this);
     this.state = {
       showCvvImage: false,
       selectData: {
@@ -21,11 +22,11 @@ class Form extends Component {
           placeholder: 'Country',
           emptyMessage: 'Please, pick your country',
           required: 'true',
-          data: {
-            'UA': 'Ukraine',
-            'US': 'USA',
-            'UK': 'United Kingdom'
-          }
+          data: [
+            {value: 'UA', label: 'Ukraine'},
+            {value: 'US', label: 'USA'},
+            {value: 'UK', label: 'United Kingdom'}
+          ]
         },
         month: {
           className: 'Form__input',
@@ -33,20 +34,20 @@ class Form extends Component {
           placeholder: 'Month',
           emptyMessage: 'Please, pick the month',
           required: 'true',
-          data: {
-            '01': 'January',
-            '02': 'February',
-            '03': 'March',
-            '04': 'April',
-            '05': 'May',
-            '06': 'June',
-            '07': 'July',
-            '08': 'August',
-            '09': 'September',
-            '10': 'October',
-            '11': 'November',
-            '12': 'December'
-          }
+          data: [
+            {value: '01', label: 'January'},
+            {value: '01', label: 'February'},
+            {value: '01', label: 'March'},
+            {value: '01', label: 'April'},
+            {value: '01', label: 'May'},
+            {value: '01', label: 'June'},
+            {value: '01', label: 'July'},
+            {value: '01', label: 'August'},
+            {value: '01', label: 'September'},
+            {value: '01', label: 'October'},
+            {value: '01', label: 'November'},
+            {value: '01', label: 'December'}
+          ]
         },
         year: {
           className: 'Form__input',
@@ -54,20 +55,19 @@ class Form extends Component {
           placeholder: 'Year',
           emptyMessage: 'Please, pick the year',
           required: 'true',
-          data: {
-            '2017': '2017',
-            '2018': '2018',
-            '2019': '2019',
-            '2020': '2020',
-            '2021': '2021',
-            '2022': '2022',
-            '2023': '2023',
-            '2024': '2024',
-            '2025': '2025',
-            '2026': '2026',
-            '2027': '2027',
-            '2028': '2028'
-          }
+          data: [
+            {value: '2017', label: '2017'},
+            {value: '2018', label: '2018'},
+            {value: '2019', label: '2019'},
+            {value: '2020', label: '2020'},
+            {value: '2021', label: '2021'},
+            {value: '2022', label: '2022'},
+            {value: '2023', label: '2023'},
+            {value: '2024', label: '2024'},
+            {value: '2025', label: '2025'},
+            {value: '2026', label: '2026'},
+            {value: '2027', label: '2027'}
+          ]
         }
       },
       inputData: {
@@ -161,9 +161,14 @@ class Form extends Component {
     });
   }
   
+  submitHandle(event) {
+    event.preventDefault();
+    console.log('Trying to submit the form');
+  }
+  
   render() {
     return (
-      <form className="row Form">
+      <form className="row Form" onSubmit={this.submitHandle}>
         <div className="col-12">
           <h5 className="Form__title">Account information</h5>
         </div>

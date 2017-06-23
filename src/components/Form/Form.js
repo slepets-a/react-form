@@ -25,7 +25,7 @@ class Form extends Component {
         'city': 'init',
         'zipCode': 'init',
         'ccn': 'init',
-        'month': 'valid',
+        'month': 'init',
         'year': 'init',
         'cvv2Code': 'init',
         'checkbox': 'init'
@@ -198,7 +198,7 @@ class Form extends Component {
     if (this.isFormValid()) {
       console.log('Form is ready');
     } else {
-      console.log('Revalidate please');
+      console.log('Revalidate please', this.state.validationStatus);
     }
   }
   
@@ -221,7 +221,7 @@ class Form extends Component {
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <SelectField options={this.state.selectData.fakeCountry}/>
+              <SelectField options={this.state.selectData.fakeCountry} validationStatus={this.state.validationStatus.fakeCountry} changeFieldStatus={this.changeFieldStatus}/>
             </div>
             <div className="col-12 col-sm-6">
               <InputField options={this.state.inputData.txtState} validationStatus={this.state.validationStatus.txtState} changeFieldStatus={this.changeFieldStatus}/>
@@ -242,15 +242,15 @@ class Form extends Component {
           </div>
         </div>
         <div className="col-12">
-          <InputField options={this.state.inputData.ccn}/>
+          <InputField options={this.state.inputData.ccn} validationStatus={this.state.validationStatus.ccn} changeFieldStatus={this.changeFieldStatus}/>
         </div>
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-md-4">
-              <SelectField options={this.state.selectData.month}/>
+              <SelectField options={this.state.selectData.month} validationStatus={this.state.validationStatus.month} changeFieldStatus={this.changeFieldStatus}/>
             </div>
             <div className="col-12 col-md-4">
-              <SelectField options={this.state.selectData.year}/>
+              <SelectField options={this.state.selectData.year} validationStatus={this.state.validationStatus.year} changeFieldStatus={this.changeFieldStatus}/>
             </div>
             <div className="col-12 col-md-4">
               <InputField options={this.state.inputData.cvv2Code} validationStatus={this.state.validationStatus.cvv2Code} changeFieldStatus={this.changeFieldStatus}/>

@@ -39,7 +39,6 @@ class InputField extends Component {
       });
     } else if (regex.test(enteredData)) {
       this.changeFieldStatus('valid');
-      console.log('Field is valid');
     } else {
       this.changeFieldStatus('invalid');
       this.setState({

@@ -42,11 +42,10 @@ class SelectField extends Component {
   }
   
   render() {
-    let {className, id, placeholder, required, data} = this.props.options;
+    let {className, id, placeholder, data} = this.props.options;
     return (
       <label className="SelectField__label">
         <select className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id}
-                required={required}
                 defaultValue="" onFocus={this.disableValidationNotification} onChange={this.handleChange}
                 onBlur={this.validateInputField}>
           <option value="" disabled={true}>{placeholder}</option>

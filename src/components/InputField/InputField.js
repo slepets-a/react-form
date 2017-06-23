@@ -9,15 +9,12 @@ class InputField extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       inputValue: '',
-      valid: 'init',
-      displayMessage: ''
+      displayMessage: this.props.options.emptyMessage
     }
   }
   
   disableValidationNotification() {
-    this.setState({
-      valid: 'init'
-    })
+    this.props.changeFieldStatus(this.props.options.id, 'init');
   }
   
   handleChange(event) {
@@ -27,35 +24,37 @@ class InputField extends Component {
     });
   }
   
+  changeFieldStatus(status) {
+    this.props.changeFieldStatus(this.props.options.id, status);
+  }
+  
   validateInputField() {
     let {emptyMessage, errorMessage, pattern} = this.props.options; //destruct props data
     let enteredData = this.state.inputValue; //take field value
     let regex = new RegExp(pattern); //create regex from the string
     if (enteredData === '') {
+      this.changeFieldStatus('invalid');
       this.setState({
-        valid: 'invalid',
         displayMessage: emptyMessage
       });
     } else if (regex.test(enteredData)) {
-      this.setState({
-        valid: 'valid'
-      });
+      this.changeFieldStatus('valid');
       console.log('Field is valid');
     } else {
+      this.changeFieldStatus('invalid');
       this.setState({
-        valid: 'invalid',
         displayMessage: errorMessage
       });
     }
   }
   
   render() {
-    let {type, className, id, placeholder, pattern, required} = this.props.options;
+    let {type, className, id, placeholder, pattern} = this.props.options;
     return (
       <label className="InputField__label">
-        <input type={type} className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id} placeholder={placeholder} pattern={pattern} required={required}
+        <input type={type} className={(this.props.validationStatus !== 'init') ? className + ' ' + this.props.validationStatus : className} id={id} placeholder={placeholder} pattern={pattern}
                onFocus={this.disableValidationNotification} onChange={this.handleChange} onBlur={this.validateInputField}/>
-          {this.state.valid === 'invalid' && <p className="Form__error-message">{this.state.displayMessage}</p>}
+          {this.props.validationStatus === 'invalid' && <p className="Form__error-message">{this.state.displayMessage}</p>}
       </label>
     )
   }

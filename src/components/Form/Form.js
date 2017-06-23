@@ -12,8 +12,24 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.toggleCvvImage = this.toggleCvvImage.bind(this);
+    this.changeFieldStatus = this.changeFieldStatus.bind(this);
+    this.isFormValid = this.isFormValid.bind(this);
     this.submitHandle = this.submitHandle.bind(this);
     this.state = {
+      validationStatus: {
+        'firstName': 'init',
+        'lastName': 'init',
+        'fakeCountry': 'init',
+        'txtState': 'init',
+        'address': 'init',
+        'city': 'init',
+        'zipCode': 'init',
+        'ccn': 'init',
+        'month': 'valid',
+        'year': 'init',
+        'cvv2Code': 'init',
+        'checkbox': 'init'
+      },
       showCvvImage: false,
       selectData: {
         fakeCountry: {
@@ -21,7 +37,6 @@ class Form extends Component {
           id: 'fakeCountry',
           placeholder: 'Country',
           emptyMessage: 'Please, pick your country',
-          required: 'true',
           data: [
             {value: 'UA', label: 'Ukraine'},
             {value: 'US', label: 'USA'},
@@ -33,7 +48,6 @@ class Form extends Component {
           id: 'month',
           placeholder: 'Month',
           emptyMessage: 'Please, pick the month',
-          required: 'true',
           data: [
             {value: '01', label: 'January'},
             {value: '01', label: 'February'},
@@ -54,7 +68,6 @@ class Form extends Component {
           id: 'year',
           placeholder: 'Year',
           emptyMessage: 'Please, pick the year',
-          required: 'true',
           data: [
             {value: '2017', label: '2017'},
             {value: '2018', label: '2018'},
@@ -78,8 +91,7 @@ class Form extends Component {
           placeholder: 'First Name',
           pattern: '^[A-Za-z]{2,10}$',
           errorMessage: 'Letters only. 10 characters max',
-          emptyMessage: 'Please, enter your name',
-          required: 'true'
+          emptyMessage: 'Please, enter your name'
         },
         lastName: {
           type: 'text',
@@ -88,8 +100,7 @@ class Form extends Component {
           placeholder: 'Second Name',
           pattern: '^[A-Za-z]{2,10}$',
           errorMessage: 'Letters only. 10 characters max',
-          emptyMessage: 'Please, enter your second name',
-          required: 'true'
+          emptyMessage: 'Please, enter your second name'
         },
         txtState: {
           type: 'text',
@@ -98,8 +109,7 @@ class Form extends Component {
           placeholder: 'Province / State',
           pattern: '^[A-Za-z ]{3,16}$',
           errorMessage: 'Letters only, 3-16 characters',
-          emptyMessage: 'Field can\'t be empty',
-          required: 'true'
+          emptyMessage: 'Field can\'t be empty'
         },
         address: {
           type: 'text',
@@ -108,8 +118,7 @@ class Form extends Component {
           placeholder: 'Address',
           pattern: '^[a-zA-Z0-9 /\\#$%&,]{3,25}$',
           errorMessage: 'Invalid input. 25 characters max',
-          emptyMessage: 'Please, enter your address',
-          required: 'true'
+          emptyMessage: 'Please, enter your address'
         },
         city: {
           type: 'text',
@@ -118,8 +127,7 @@ class Form extends Component {
           placeholder: 'City',
           pattern: '^[A-Za-z0-9]{3,12}$',
           errorMessage: '12 characters max. No special characters',
-          emptyMessage: 'Please, enter your city',
-          required: 'true'
+          emptyMessage: 'Please, enter your city'
         },
         zipCode: {
           type: 'text',
@@ -128,8 +136,7 @@ class Form extends Component {
           placeholder: 'ZIP / Postal Code',
           pattern: '^[A-Za-z0-9]{3,6}$',
           errorMessage: '3-6 characters. Letters and digits only. No special characters',
-          emptyMessage: 'Please, enter your ZIP-code',
-          required: 'true'
+          emptyMessage: 'Please, enter your ZIP-code'
         },
         ccn: {
           type: 'text',
@@ -138,8 +145,7 @@ class Form extends Component {
           placeholder: 'Card number',
           pattern: '^[0-9 ]{16,19}$',
           errorMessage: 'Card number can consist from digits and spaces',
-          emptyMessage: 'This field can\'t be empty',
-          required: 'true'
+          emptyMessage: 'This field can\'t be empty'
         },
         cvv2Code: {
           type: 'password',
@@ -148,8 +154,7 @@ class Form extends Component {
           placeholder: 'CVV2',
           pattern: '^[0-9]{3}$',
           errorMessage: 'Must be 3 digits',
-          emptyMessage: 'Field is required',
-          required: 'true'
+          emptyMessage: 'Field is required'
         }
       }
     }
@@ -161,9 +166,40 @@ class Form extends Component {
     });
   }
   
+  changeFieldStatus(field, status) {
+    let newValidationStatus = this.state.validationStatus;
+    newValidationStatus[field] = status;
+    this.setState({
+      validationStatus: newValidationStatus
+    });
+  }
+  
+  isFormValid() {
+    for (let field in this.state.validationStatus) {
+      if (this.state.validationStatus.hasOwnProperty(field)) {
+        switch (this.state.validationStatus[field]) {
+          case 'init':
+            this.changeFieldStatus(field, 'invalid');
+            return false;
+    
+          case 'invalid':
+            return false;
+    
+          default:
+            console.log('field is valid');
+        }
+      }
+    }
+    return true;
+  }
+  
   submitHandle(event) {
     event.preventDefault();
-    console.log('Trying to submit the form');
+    if (this.isFormValid()) {
+      console.log('Form is ready');
+    } else {
+      console.log('Revalidate please');
+    }
   }
   
   render() {
@@ -175,10 +211,10 @@ class Form extends Component {
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <InputField options={this.state.inputData.firstName}/>
+              <InputField options={this.state.inputData.firstName} validationStatus={this.state.validationStatus.firstName} changeFieldStatus={this.changeFieldStatus}/>
             </div>
             <div className="col-12 col-sm-6">
-              <InputField options={this.state.inputData.lastName}/>
+              <InputField options={this.state.inputData.lastName} validationStatus={this.state.validationStatus.lastName} changeFieldStatus={this.changeFieldStatus}/>
             </div>
           </div>
         </div>
@@ -188,20 +224,20 @@ class Form extends Component {
               <SelectField options={this.state.selectData.fakeCountry}/>
             </div>
             <div className="col-12 col-sm-6">
-              <InputField options={this.state.inputData.txtState}/>
+              <InputField options={this.state.inputData.txtState} validationStatus={this.state.validationStatus.txtState} changeFieldStatus={this.changeFieldStatus}/>
             </div>
           </div>
         </div>
         <div className="col-12">
-          <InputField options={this.state.inputData.address}/>
+          <InputField options={this.state.inputData.address} validationStatus={this.state.validationStatus.address} changeFieldStatus={this.changeFieldStatus}/>
         </div>
         <div className="col-12">
           <div className="row">
             <div className="col-12 col-sm-6">
-              <InputField options={this.state.inputData.city}/>
+              <InputField options={this.state.inputData.city} validationStatus={this.state.validationStatus.city} changeFieldStatus={this.changeFieldStatus}/>
             </div>
             <div className="col-12 col-sm-6">
-              <InputField options={this.state.inputData.zipCode}/>
+              <InputField options={this.state.inputData.zipCode} validationStatus={this.state.validationStatus.zipCode} changeFieldStatus={this.changeFieldStatus}/>
             </div>
           </div>
         </div>
@@ -217,7 +253,7 @@ class Form extends Component {
               <SelectField options={this.state.selectData.year}/>
             </div>
             <div className="col-12 col-md-4">
-              <InputField options={this.state.inputData.cvv2Code}/>
+              <InputField options={this.state.inputData.cvv2Code} validationStatus={this.state.validationStatus.cvv2Code} changeFieldStatus={this.changeFieldStatus}/>
             </div>
           </div>
         </div>

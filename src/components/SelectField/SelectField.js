@@ -10,14 +10,12 @@ class SelectField extends Component {
     this.state = {
       selectValue: '',
       valid: 'init',
-      displayMessage: ''
+      displayMessage: this.props.options.emptyMessage
     }
   }
   
   disableValidationNotification() {
-    this.setState({
-      valid: 'init'
-    })
+    this.props.changeFieldStatus(this.props.options.id, 'init');
   }
   
   handleChange(event) {
@@ -26,18 +24,20 @@ class SelectField extends Component {
     });
   }
   
+  changeFieldStatus(status) {
+    this.props.changeFieldStatus(this.props.options.id, status);
+  }
+  
   validateInputField() {
     let {emptyMessage} = this.props.options;
-    if (this.state.selectValue !== '') {
+    let selectedOption = this.state.selectValue;
+    if (selectedOption === '') {
+      this.changeFieldStatus('invalid');
       this.setState({
-        valid: 'valid'
-      });
-      console.log('Field is valid');
-    } else {
-      this.setState({
-        valid: 'invalid',
         displayMessage: emptyMessage
       })
+    } else {
+      this.changeFieldStatus('valid');
     }
   }
   
@@ -45,7 +45,7 @@ class SelectField extends Component {
     let {className, id, placeholder, data} = this.props.options;
     return (
       <label className="SelectField__label">
-        <select className={(this.state.valid !== 'init') ? className + ' ' + this.state.valid : className} id={id}
+        <select className={(this.props.validationStatus !== 'init') ? className + ' ' + this.props.validationStatus : className} id={id}
                 defaultValue="" onFocus={this.disableValidationNotification} onChange={this.handleChange}
                 onBlur={this.validateInputField}>
           <option value="" disabled={true}>{placeholder}</option>
@@ -53,7 +53,7 @@ class SelectField extends Component {
             return <option key={index} value={option.value}>{option.label}</option>
           })}
         </select>
-        {this.state.valid === 'invalid' && <p className="Form__error-message">{this.state.displayMessage}</p>}
+        {this.props.validationStatus === 'invalid' && <p className="Form__error-message">{this.state.displayMessage}</p>}
       </label>
     )
   }

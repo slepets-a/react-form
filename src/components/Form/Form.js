@@ -186,19 +186,16 @@ class Form extends Component {
             return false;
     
           default:
-            console.log('field is valid');
+            return true;
         }
       }
     }
-    return true;
   }
   
   submitHandle(event) {
     event.preventDefault();
     if (this.isFormValid()) {
-      console.log('Form is ready');
-    } else {
-      console.log('Revalidate please', this.state.validationStatus);
+      console.log('Form is ready. Need to store whole data in Redux store');
     }
   }
   

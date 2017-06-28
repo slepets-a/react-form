@@ -18,7 +18,6 @@ class CheckboxField extends Component {
     } else {
       validationStatus === 'valid' ? this.changeFieldStatus('invalid') : this.changeFieldStatus('valid')
     }
-    console.log(this.props.validationStatus)
   }
   
   changeFieldStatus(status) {

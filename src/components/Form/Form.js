@@ -116,7 +116,7 @@ class Form extends Component {
           className: 'Form__input',
           id: 'address',
           placeholder: 'Address',
-          pattern: '^[a-zA-Z0-9 /\\#$%&,]{3,25}$',
+          pattern: '^[a-zA-Z0-9 /#$%&,]{3,25}$',
           errorMessage: 'Invalid input. 25 characters max',
           emptyMessage: 'Please, enter your address'
         },

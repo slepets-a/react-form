@@ -280,8 +280,12 @@ class Form extends Component {
             options={{
               text: 'I have read and agree to the <a href="#" target="_blank">Terms & Conditions</a> and certify that I am 18 years of age. I acknowledge that the recurring membership will rebill at [[Price]] every 30 days, further notifications will be by email from [[domain]]',
               className: 'Form__input Form__checkbox-container',
+              id: 'checkbox',
+              errorMessage: 'You must accept policies',
               required: 'true'
             }}
+            validationStatus={this.state.validationStatus.checkbox}
+            changeFieldStatus={this.changeFieldStatus}
           />
         </div>
         <div className="col-12 text-center">
